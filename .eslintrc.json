@@ -1,0 +1,7 @@
+{
+    "parser": "babel-eslint",
+    "extends": ["standard", "standard-jsx", "standard-react"],
+    "rules": {
+        "default-param-last": "off"
+    }
+}
