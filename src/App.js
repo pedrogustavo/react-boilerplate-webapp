@@ -1,16 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import {
-  increaseCounter,
-  decreaseCounter
-} from './redux/Counter/counter.actions'
+import { useTranslation } from 'react-i18next'
+import { increaseCounter, decreaseCounter } from './redux/Counter/counter.actions'
 
 import './App.css'
 
 function App (props) {
+  const { t } = useTranslation()
   return (
     <div className='App'>
+      <p>{t('welcome')}</p>
       <div>Count: {props.count}</div>
       <button onClick={() => props.increaseCounter()}>Increase Count</button>
       <button onClick={() => props.decreaseCounter()}>Decrease Count</button>
