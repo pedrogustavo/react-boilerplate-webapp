@@ -7,11 +7,7 @@ Para executar esse projeto, é necessário ter o [node](https://nodejs.org/en/) 
 
 Utilize os seguintes scripts:
 ```js
-npm start
-// para rodar o projeto com hot reload local
-// ou
-
-npm run serve
+npm run serve // ou (npm start) env de development
 npm run serve:stg // env de staging
 npm run serve:prd // env de production
 
