@@ -1,6 +1,6 @@
 {
     "parser": "babel-eslint",
-    "extends": ["standard", "standard-jsx", "standard-react"],
+    "extends": ["standard", "standard-jsx", "standard-react", "react-app", "react-app/jest"],
     "rules": {
         "default-param-last": "off"
     }
