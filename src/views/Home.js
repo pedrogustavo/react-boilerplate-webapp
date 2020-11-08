@@ -16,7 +16,8 @@ function Home (props) {
     setLanguage(event.target.value)
     changeLanguage(event.target.value)
   }
-
+  console.log('process.env.NODE_ENV', process.env.NODE_ENV)
+  console.log('process.env.REACT_APP_CORE_ENV', process.env.REACT_APP_CORE_ENV)
   return (
     <div>
       <p>{t('welcome')}</p>

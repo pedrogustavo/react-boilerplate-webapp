@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.1",
     "@testing-library/user-event": "^12.2.0",
+    "env-cmd": "^10.1.0",
     "i18next": "^19.8.3",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
@@ -21,6 +22,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "serve": "npm start",
+    "serve:stg": "env-cmd -f ./.env.staging react-scripts start",
+    "serve:prd": "env-cmd -f ./.env.production react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
