@@ -1,57 +1,40 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { useTranslation } from 'react-i18next'
-import { increaseCounter, decreaseCounter } from './redux/Counter/counter.actions'
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import loadable from '@loadable/component'
 
 import './App.css'
 
-function App (props) {
-  const [language, setLanguage] = useState('pt-BR')
+const Home = loadable(() => import('./views/Home'))
+const About = loadable(() => import('./views/About'))
 
-  const { t, i18n } = useTranslation()
-  const changeLanguage = lng => {
-    i18n.changeLanguage(lng)
-  }
-
-  const handleChange = event => {
-    setLanguage(event.target.value)
-    changeLanguage(event.target.value)
-  }
-
+function App () {
   return (
     <div className='App'>
-      <p>{t('welcome')}</p>
-      <div>Count: {props.count}</div>
+      <Router>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to='/'>Home</Link>
+              </li>
+              <li>
+                <Link to='/about'>About</Link>
+              </li>
+            </ul>
+          </nav>
 
-      <button onClick={() => props.increaseCounter()}>Increase Count</button>
-      <button onClick={() => props.decreaseCounter()}>Decrease Count</button>
-
-      <select value={language} onChange={handleChange}>
-        <option value='pt-BR'>pt-BR</option>
-        <option value='en-US'>en-US</option>
-      </select>
+          <Switch>
+            <Route path='/about'>
+              <About />
+            </Route>
+            <Route path='/'>
+              <Home />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     </div>
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    count: state.counter.count
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    increaseCounter: () => dispatch(increaseCounter()),
-    decreaseCounter: () => dispatch(decreaseCounter())
-  }
-}
-
-App.propTypes = {
-  count: PropTypes.number,
-  increaseCounter: PropTypes.func,
-  decreaseCounter: PropTypes.func
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App
