@@ -24,12 +24,8 @@ function App () {
           </nav>
 
           <Switch>
-            <Route path='/about'>
-              <About />
-            </Route>
-            <Route path='/'>
-              <Home />
-            </Route>
+            <Route path='/about' component={About} />
+            <Route path='/' component={Home} />
           </Switch>
         </div>
       </Router>
